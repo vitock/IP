@@ -48,8 +48,10 @@ $bro = get_bro();
 function get_os(){  
 $agent = $_SERVER['HTTP_USER_AGENT'];  
     $os = false;  
-   
-    if (preg_match('/win/i', $agent) && strpos($agent, '95'))  
+    if (preg_match('/Windows Phone/i', $agent))  {
+      $os = "生不逢时的WP";
+    }
+    else if (preg_match('/win/i', $agent) && strpos($agent, '95'))  
     {  
       $os = 'Windows 95';  
     }  
@@ -91,10 +93,6 @@ $agent = $_SERVER['HTTP_USER_AGENT'];
     {  
       $os = 'Windows 32';  
     }  
-    
-    else if (preg_match('/Windows Phone/i', $agent))  {
-      $os = "生不逢时的WP";
-    }
     else if (preg_match('/linux/i', $agent))  
     {  
       $os = 'Linux';  
