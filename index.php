@@ -42,8 +42,8 @@ curl_setopt($curl, CURLOPT_USERAGENT, $UserAgent);
 curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);  
 $data = curl_exec($curl);
 $data = json_decode($data, true);
-if(strcmp($data['city'],$city) == 0){
-    $weather = $data["data"]["wea"];
+if(strcmp($data['city'],$city) ===  0){
+    $weather = $data["data"][0]["wea"];
 }
 
 if(strlen($weather) > 2){
