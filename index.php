@@ -28,8 +28,9 @@ $data = json_decode($data, true);
 $country = $data['data']['country']; 
 $region = $data['data']['region']; 
 $city = $data['data']['city'];
-$bak = getenv("BAK");
-$url = "http://api.map.baidu.com/telematics/v3/weather?output=json&ak=".$bak."&location=".$region.$city;
+// $bak = getenv("BAK");
+// $url = "http://api.map.baidu.com/telematics/v3/weather?output=json&ak=".$bak."&location=".$region.$city;
+$url = "https://www.tianqiapi.com/api/?city=".$city;
 $curl = curl_init(); 
 curl_setopt($curl, CURLOPT_URL, $url); 
 curl_setopt($curl, CURLOPT_HEADER, 0);  
@@ -40,15 +41,16 @@ curl_setopt($curl, CURLOPT_ENCODING, '');
 curl_setopt($curl, CURLOPT_USERAGENT, $UserAgent);  
 curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);  
 $data = curl_exec($curl);
-
 $data = json_decode($data, true);
+if(strcmp($data['city'],$city) == 0){
+    $weather = $data["data"]["wea"];
+}
 
-$weather = $data['results'][0]['weather_data'][0]['weather'].' '.$data['results'][0]['weather_data'][0]['wind'];
 if(strlen($weather) > 2){
 
 }
 else{
-    $weather = "您使用的是 ".$bro;
+    $weather = "您使用的是:".$bro;
 }
 
 //定义颜色
