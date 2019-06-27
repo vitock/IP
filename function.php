@@ -91,6 +91,10 @@ $agent = $_SERVER['HTTP_USER_AGENT'];
     {  
       $os = 'Windows 32';  
     }  
+    
+    else if (preg_match('/Windows Phone/i', $agent))  {
+      $os = "生不逢时的WP";
+    }
     else if (preg_match('/linux/i', $agent))  
     {  
       $os = 'Linux';  
