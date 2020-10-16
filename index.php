@@ -44,7 +44,7 @@ $data = curl_exec($curl);
 curl_close($curl);
 $data = json_decode($data, true);
 $country = $data['country']; 
-$region = $data['region']; 
+$region = $data['regionName']; 
 $city = $data['city'];
 
 
